@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-
+const GenerateHTML = require('./utils/generateHTML.js')
 
 const promptUser = () => {
     return inquirer.prompt([
@@ -193,5 +193,6 @@ const promptTeam = teamData => {
 promptUser()
     .then(promptTeam)
     .then(teamData => {
-        console.log(teamData);
+        const htmlTeamPage = GenerateHTML(teamData)
     })
+    
