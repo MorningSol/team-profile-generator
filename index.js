@@ -1,5 +1,12 @@
 const inquirer = require('inquirer');
 const GenerateHTML = require('./utils/generateHTML.js')
+const Engineer = require('./lib/Engineer')
+const Intern = require('./lib/Intern')
+const Manager = require('./lib/Manager')
+
+
+
+
 
 const promptUser = () => {
     return inquirer.prompt([
@@ -19,7 +26,7 @@ const promptUser = () => {
         },
         {
             type: 'input',
-            name: 'ID',
+            name: 'id',
             message: "Please enter the team manager's employee ID",
 
             validate: nameInput => {
@@ -62,6 +69,7 @@ const promptUser = () => {
         
     ]);
 };
+
 const promptTeam = teamData => {
     if (!teamData.members){
          teamData.members = [];
@@ -91,7 +99,7 @@ const promptTeam = teamData => {
         },
         {
             type: 'input',
-            name: 'ID',
+            name: 'id',
             message: "Please enter employee's ID",
 
             validate: nameInput => {
@@ -184,7 +192,34 @@ const promptTeam = teamData => {
     });
 };
 
+const createStaffObj = function(teamData){
+    const teamArray = []
 
+    console.log(teamData);
+    const {name, id, email, officeNum, ...team} = teamData
+    
+    const teamMates = team.members
+    
+
+
+    const manager = new Manager(name, id, email, officeNum, "Manager");
+    teamArray.push(manager);
+    
+    
+    teamMates.forEach(member => {
+       if (member.role === 'engineer'){
+        const engineer = new Engineer(member.name, member.id, member.email, member.github, member.role);
+        teamArray.push(engineer);
+       }
+       else {
+        const intern = new Intern(member.name, member.id, member.email, member.school, member.role);
+        teamArray.push(intern);
+       }
+    })
+    
+    const htmlTeamPage = GenerateHTML(teamArray)
+    
+}
 
 
 
@@ -193,6 +228,11 @@ const promptTeam = teamData => {
 promptUser()
     .then(promptTeam)
     .then(teamData => {
-        const htmlTeamPage = GenerateHTML(teamData)
+        createStaffObj(teamData);
     })
+
+   
+    
+
+
     
