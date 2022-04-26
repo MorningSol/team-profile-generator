@@ -195,16 +195,12 @@ const promptTeam = teamData => {
 const createStaffObj = function(teamData){
     const teamArray = []
 
-    console.log(teamData);
     const {name, id, email, officeNum, ...team} = teamData
     
     const teamMates = team.members
     
-
-
     const manager = new Manager(name, id, email, officeNum, "Manager");
     teamArray.push(manager);
-    
     
     teamMates.forEach(member => {
        if (member.role === 'engineer'){
@@ -217,8 +213,8 @@ const createStaffObj = function(teamData){
        }
     })
     
-    const htmlTeamPage = GenerateHTML(teamArray)
-    
+   return teamArray
+
 }
 
 
@@ -228,7 +224,10 @@ const createStaffObj = function(teamData){
 promptUser()
     .then(promptTeam)
     .then(teamData => {
-        createStaffObj(teamData);
+       return createStaffObj(teamData);
+    })
+    .then(teamArray => {
+       return GenerateHTML(teamArray)
     })
 
    
