@@ -199,7 +199,7 @@ const createStaffObj = function(teamData){
     
     const teamMates = team.members
     
-    const manager = new Manager(name, id, email, officeNum, "Manager");
+    const manager = new Manager(name, id, email, officeNum, "manager");
     teamArray.push(manager);
     
     teamMates.forEach(member => {
