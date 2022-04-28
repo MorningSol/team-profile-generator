@@ -2,20 +2,76 @@
 
 
 function createTeamCards(teamArray){
+    const cardsArray = [];
     teamArray.forEach(member => {
+
         if (member.getRole() === "manager"){
-            
+            const managerCard =
+            `
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header text-white bg-primary p-3">
+                        <h2>${member.getName()}</h2>
+                        <p class="fs-4"><i class="fa-solid fa-mug-hot"></i> Manager</p>
+                    </div>
+                    <div class="card-body bg-primary bg-opacity-10 py-5">
+                        <ul class="list-group list-group-flush border border-3">
+                            <li class="list-group-item">ID: ${member.getId()}</li>
+                            <li class="list-group-item">Email: ${member.getEmail()}</li>
+                            <li class="list-group-item">Office Number: ${member.getOfficeNum()}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            `
+            cardsArray.push(managerCard)
         }
 
         else if (member.getRole() === "engineer"){
-            
+            const engineerCard =`
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header text-white bg-primary p-3">
+                        <h2>${member.getName()}</h2>
+                        <p class="fs-4"><i class="fa-solid fa-glasses"></i> Engineer</p>
+                    </div>
+                    <div class="card-body bg-primary bg-opacity-10 py-5">
+                        <ul class="list-group list-group-flush border border-3">
+                            <li class="list-group-item">ID: ${member.getId()}</li>
+                            <li class="list-group-item">Email: ${member.getEmail()}</li>
+                            <li class="list-group-item">GitHub: ${member.getGithub()}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            `    
+            cardsArray.push(engineerCard)
         }
 
         else if (member.getRole() === "intern"){
-            
+            const internCard = `
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header text-white bg-primary p-3">
+                        <h2>${member.getName()}</h2>
+                        <p class="fs-4"><i class="fa-solid fa-user-graduate"></i> Intern</p>
+                    </div>
+                    <div class="card-body bg-primary bg-opacity-10 py-5">
+                        <ul class="list-group list-group-flush border border-3">
+                            <li class="list-group-item">ID: ${member.getId()}</li>
+                            <li class="list-group-item">Email: ${member.getEmail()}</li>
+                            <li class="list-group-item">School: ${member.getSchool()}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            `
+            cardsArray.push(internCard)
         }
 
-    });
+    })
+    const teamHtml = cardsArray.join('')
+    return teamHtml
 }
 
 
@@ -25,7 +81,7 @@ function generateHTML(teamArray){
 
     // const bob = teamArray[0].getRole();
     // console.log(bob)
-
+    // .join('')}
     return `
     <!DOCTYPE html>
         <html lang="en">
@@ -45,12 +101,9 @@ function generateHTML(teamArray){
 
             <main class="m-5 d-flex justify-content-center">
                 <div class="row row-cols-1 row-cols-md-3 g-5 justify-content-center">
-        
                     ${createTeamCards(teamArray)}
-
                 </div>
             </main>
-      
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         </body>
     </html>

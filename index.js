@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const fs = require('fs');
 const GenerateHTML = require('./utils/generateHTML.js')
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
@@ -228,6 +229,12 @@ promptUser()
     })
     .then(teamArray => {
        return GenerateHTML(teamArray)
+    })
+    .then(htmlPage => {
+        fs.writeFile('./dist/created-team.html', htmlPage, err => {
+            if (err) throw new Error(err);
+            console.log('Checkout your new team page in the dist folder');
+        });
     })
 
    
