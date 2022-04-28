@@ -100,8 +100,10 @@ function generateHTML(teamArray){
             </header>
 
             <main class="m-5 d-flex justify-content-center">
-                <div class="row row-cols-1 row-cols-md-3 g-5 justify-content-center">
-                    ${createTeamCards(teamArray)}
+                <div class="container">
+                    <div class="row row-cols-1 row-cols-md-3 g-5 justify-content-center">
+                        ${createTeamCards(teamArray)}
+                    </div>
                 </div>
             </main>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
