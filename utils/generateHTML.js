@@ -17,7 +17,7 @@ function createTeamCards(teamArray){
                     <div class="card-body bg-primary bg-opacity-10 py-5">
                         <ul class="list-group list-group-flush border border-3">
                             <li class="list-group-item">ID: ${member.getId()}</li>
-                            <li class="list-group-item">Email: ${member.getEmail()}</li>
+                            <li class="list-group-item">Email: <a href="mailto:${member.getEmail()}">${member.getEmail()}</a></li>
                             <li class="list-group-item">Office Number: ${member.getOfficeNum()}</li>
                         </ul>
                     </div>
@@ -26,6 +26,7 @@ function createTeamCards(teamArray){
             `
             cardsArray.push(managerCard)
         }
+
 
         else if (member.getRole() === "engineer"){
             const engineerCard =`
@@ -38,8 +39,8 @@ function createTeamCards(teamArray){
                     <div class="card-body bg-primary bg-opacity-10 py-5">
                         <ul class="list-group list-group-flush border border-3">
                             <li class="list-group-item">ID: ${member.getId()}</li>
-                            <li class="list-group-item">Email: ${member.getEmail()}</li>
-                            <li class="list-group-item">GitHub: ${member.getGithub()}</li>
+                            <li class="list-group-item">Email: <a href="mailto:${member.getEmail()}">${member.getEmail()}</a></li>
+                            <li class="list-group-item">GitHub: <a href="https://github.com/${member.getGithub()}">${member.getGithub()}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -59,7 +60,7 @@ function createTeamCards(teamArray){
                     <div class="card-body bg-primary bg-opacity-10 py-5">
                         <ul class="list-group list-group-flush border border-3">
                             <li class="list-group-item">ID: ${member.getId()}</li>
-                            <li class="list-group-item">Email: ${member.getEmail()}</li>
+                            <li class="list-group-item">Email: <a href="mailto:${member.getEmail()}">${member.getEmail()}</a></li>
                             <li class="list-group-item">School: ${member.getSchool()}</li>
                         </ul>
                     </div>
@@ -75,13 +76,10 @@ function createTeamCards(teamArray){
 }
 
 
-
 function generateHTML(teamArray){
     console.log(teamArray)
 
-    // const bob = teamArray[0].getRole();
-    // console.log(bob)
-    // .join('')}
+   
     return `
     <!DOCTYPE html>
         <html lang="en">
