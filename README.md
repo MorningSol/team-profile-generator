@@ -44,6 +44,7 @@ Enter ***node index.js*** in the command-line, from the root folder of the proje
 ---
 ## Demonstration Video
 
+![team-profile-generator-sample](https://user-images.githubusercontent.com/98545619/169610072-4d615e9e-9a6d-452f-a808-5ce1aba77860.png)
 
 &nbsp;
 
